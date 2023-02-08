@@ -1,0 +1,8 @@
+<div class="container pb-5">
+<%= simple_form_for @blog do |f| %>
+  <%= f.input :name, label: 'Name : ', error: 'Name is mandatory, please specify' %><br>
+  <%= f.input :subject,  label: 'Subject : ' %><br>
+  <%= f.input :description, label: 'Description : ', placeholder: 'Max 100 words' %><br>
+  <center><%= f.button :submit, data: { turbo_frame: "frame1" } %></center>
+  <% end %>
+</div>

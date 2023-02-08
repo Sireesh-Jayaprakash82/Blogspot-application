@@ -1,0 +1,12 @@
+<html>
+<body style="background-color:#b0c4de">
+<div class="container-fluid pb-5">
+<center><h2><i> Want to speak up to the world...</i></h2></center>
+<br><br>
+<%= render 'form' %>
+</div>
+<%= turbo_frame_tag "frame1" do %> 
+    <%= render 'blog_name'%>
+<% end %> 
+</body>
+</html>

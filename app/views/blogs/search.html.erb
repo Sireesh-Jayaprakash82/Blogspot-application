@@ -1,0 +1,35 @@
+<html>
+<body style = "background-color:silver">
+<style>
+#in-body
+{
+    margin: 0 !important;
+}
+</style>
+<%count = 0%>
+<div class = "container-fluid">
+<% @blog.each do |b| %>
+    <% if count.even? %>
+        <div class = "container-fluid" style = "background-color:red" id="in-body">
+        <br>
+        <h2>Name : <%= b.name %></h2>
+        <h2>Subject : <%= b.subject %></h2>
+        <h2>Description : <%= b.description %></h2>
+        <br><br>
+        </div>
+        <hr><hr><hr>
+    <% else %>
+        <div class = "container-fluid" style = "background-color:purple" id="in-body">
+        <br>
+        <h2>Name : <%= b.name %></h2>
+        <h2>Subject : <%= b.subject %></h2>
+        <h2>Description : <%= b.description %></h2>
+        <br><br>
+        </div>
+        <hr><hr><hr>
+    <% end %>
+    <% count+=1 %>
+<% end %>
+</div>
+</body>
+</html>
