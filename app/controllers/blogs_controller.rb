@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
     before_action :find_blog, only: [:show, :edit, :update, :destroy]
+    skip_before_action :verify_authenticity_token
     def index
         @blog = Blog.all
     end
@@ -29,6 +30,7 @@ class BlogsController < ApplicationController
     
     def show
         # @blog = Blog.find(params[:id])
+
     end
 
     def date
@@ -40,9 +42,12 @@ class BlogsController < ApplicationController
         @blog = Blog.find_by_sql("select * from Blogs where subject like '%#{@key}%'")
     end
 
+    def time
+        Turbo::StreamsChannel.broadcast_update_to("mystr", target: "content", partial: "/blogs/blog_name")
+    end
     
     def destroy
-        # @blog = Blog.find(params[:id])
+        # debugger
         @blog.destroy
         redirect_to root_path
     end

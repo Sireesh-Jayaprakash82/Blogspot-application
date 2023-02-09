@@ -1,6 +1,11 @@
-<%= turbo_frame_tag "frame1" do %> 
-<% blog = Blog.all %>
-<% blog.each do |b|%>
+<%
+=begin%>
+ <%= turbo_frame_tag "frame1" do %>  
+<%
+=end%>
+<% beek = Blog.all %>
+<% beek.each do |b|%>
 <h2><%= b.name %></h2><br>
 <% end %>
-<% end %>
+
+<%#end%>

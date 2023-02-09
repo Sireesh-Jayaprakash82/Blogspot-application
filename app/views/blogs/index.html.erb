@@ -4,71 +4,77 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto;
-  padding: 5px;
+  padding: 10px;
 }
 .grid-item {
-  padding: 30px;
+  padding: 10px, 5px;
   font-size: 20px;
   text-align: center;
-  background-color: yellow;
-  width: 500px
+  background-color: gray;
+  width: 450px
 }
 .container-fluid{
 	margin-bottom: 0 !important;
 	padding-bottom: 0 !important;
   padding: 0;
 	font-size: 0;
-   border: 0 !important;
+  border: 0 !important;
 }
 table{
   background-color:	#ffd700;
   }
 </style>
 <div class="container-fluid">
-<center><h1><b><u><i>Blogs World </i></u></b></h1></center>
-<br><br><br><br><br>
-<% count = 0 %> 
-  <% @blog.each do |b| %>
-  <div class="grid-container">
+  <center><h1><b><u><i>Blogs World </i></u></b></h1></center>
+  <br><br><br><br><br>
+  <% count = 0 %> 
   <%
 =begin%>
  <table>
-  <% if count.even? %>
-    <tr>
-  <% end %>
-  <td> 
+    <% if count.even? %>
+      <tr><td>
+    <% else %>
+      <td>
+    <% end %> 
 <%
 =end%>
-    <div class="grid-item">
-      <table border = 3>
-      <tr><td>Name : <h3><%= b.name %><h3></td></tr>
-      <tr><td>Subject : <h5><%= b.subject %></h5></td></tr>
-      <tr><td width = 450px>Description : 
-      <% if b.description.size>60 %>
-        <h5 style="text-align:justify;"><%= b.description %></h5></td></tr>
-      <% else %>
-        <h5><%= b.description %></h5></td></tr>
-      <% end %>
-      <% if user_signed_in? %>
-        <% if current_user.id == b.user_id %>
-          <tr style="font-size: 15px;"><td><%= link_to "Edit Blog", edit_blog_path(b) %></td></tr>
-          <tr style="font-size: 15px;"><td><%= link_to "View Blog", blog_path(b) %></td></tr>
-        <% end %>
-      <% end %>
-      </table>
-    </div>
-    </td>
-    <%
-=begin%>
+    <% @blog.each do |b| %>
+      <div class="grid-container">
+      <div class="grid-item">
+          <table border=2>
+            <tr><td>Name : <h3><%= b.name %><h3></td></tr>
+            <tr><td>Subject : <h5><%= b.subject %></h5></td></tr>
+            <tr><td width = 450px>Description : 
+            <% if b.description.size>60 %>
+              <h5 style="text-align:justify;"><%= b.description %></h5></td></tr>
+            <% else %>
+              <h5><%= b.description %></h5></td></tr>
+            <% end %>
+            <% if user_signed_in? %>
+              <% if current_user.id == b.user_id %>
+                <tr style="font-size: 15px;"><td><%= link_to "Edit Blog", edit_blog_path(b) %></td></tr>
+                <tr style="font-size: 15px;"><td><%= link_to "View Blog", blog_path(b) %></td></tr>
+              <% end %>
+            <% end %>
+          </table>
  <%
 =begin%>
- <% count+= 1 %>
-    <% if count.even? %>
-    </tr>
-    <% end %>  
+ <% count+=1 %> 
 <%
 =end%>
-  </div>
-<% end %>
+      <h1>Access Blog ID : <%= b.id %></h1>  
+      </div>
+      <%
+=begin%>
+ <% if count.even? %>
+        <td></tr>
+      <% else %>
+        <td>
+      <% end %>
+  </table> 
+<%
+=end%>
+</div>
+    <% end %>
 </body>
 </html>

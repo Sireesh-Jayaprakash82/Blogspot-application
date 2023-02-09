@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   root "blogs#index"
   get "/search", to: "blogs#search"
   get "/date", to: "blogs#date"
+  post "/time", to: "blogs#time"
   # get "/blogs/:id", to: "blogs#destroy
 end

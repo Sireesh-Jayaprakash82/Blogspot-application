@@ -5,8 +5,25 @@
 <br><br>
 <%= render 'form' %>
 </div>
-<%= turbo_frame_tag "frame1" do %> 
-    <%= render 'blog_name'%>
-<% end %> 
+<%
+=begin%>
+ <%= turbo_frame_tag "frame1" do %>  
+<%
+=end%>
+<%= turbo_stream_from "mystr" %>
+<div class = "container-fluid" id="content">
+<%= button_to "Load Names", time_path %>
+</div>
+    <%
+=begin%>
+ <%= render 'blog_name'%> 
+<%
+=end%>
+
+<%
+=begin%>
+ <% end %>  
+<%
+=end%>
 </body>
 </html>
