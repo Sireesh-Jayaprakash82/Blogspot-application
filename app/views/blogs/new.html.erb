@@ -3,20 +3,28 @@
 <div class="container-fluid pb-5">
 <center><h2><i> Want to speak up to the world...</i></h2></center>
 <br><br>
+<div id="new_blog">
 <%= render 'form' %>
+</div>
 </div>
 <%
 =begin%>
  <%= turbo_frame_tag "frame1" do %>  
 <%
 =end%>
-<%= turbo_stream_from "mystr" %>
+
+<%= turbo_stream_from "mystr" %> 
 <div class = "container-fluid" id="content">
-<%= button_to "Load Names", time_path %>
-</div>
-    <%
+<center><%= button_to "Load Names", time_path %></center>
+<div id="blog_display">
+<%= render 'blog_name'%>
+</div> 
+</div> 
+<%
 =begin%>
- <%= render 'blog_name'%> 
+ <div id="blog_display">
+ <%= render 'blog_name'%>
+</div> 
 <%
 =end%>
 

@@ -38,7 +38,23 @@ table{
     <% end %> 
 <%
 =end%>
-    <% @blog.each do |b| %>
+    <%
+=begin%>
+ <button class="btn-primary" type="button" size= "100px"><h3>Hello</h3> 
+<%
+=end%>
+    <%
+=begin%>
+ <%= render partial: "blogs/form", locals: { blog: @blog } %>  
+<%
+=end%>
+    <%
+=begin%>
+ </button>   
+<%
+=end%>
+    <% blog = Blog.all%>
+    <% blog.each do |b| %>
       <div class="grid-container">
       <div class="grid-item">
           <table border=2>
@@ -52,17 +68,36 @@ table{
             <% end %>
             <% if user_signed_in? %>
               <% if current_user.id == b.user_id %>
-                <tr style="font-size: 15px;"><td><%= link_to "Edit Blog", edit_blog_path(b) %></td></tr>
-                <tr style="font-size: 15px;"><td><%= link_to "View Blog", blog_path(b) %></td></tr>
-              <% end %>
-            <% end %>
+                <%
+=begin%>
+ <%= turbo_frame_tag "frame1" do%> 
+<%
+=end%>
+                  <tr style="font-size: 15px;"><td><%= link_to "Edit Blog", edit_blog_path(b) %></td></tr>
+                   <%
+=begin%>
+ <%= render 'form' locals: { blog: Blog.new } %>  
+<%
+=end%>
+                  <tr style="font-size: 15px;"><td><%= link_to "View Blog", blog_path(b) %></td></tr>
+                <% end %>
+                <% end %>
+            <%
+=begin%>
+ <% end %> 
+<%
+=end%>
           </table>
  <%
 =begin%>
  <% count+=1 %> 
 <%
 =end%>
+    <% if user_signed_in? %>
+     <% if current_user.id == b.user_id %>
       <h1>Access Blog ID : <%= b.id %></h1>  
+      <% end %>
+    <% end %>
       </div>
       <%
 =begin%>

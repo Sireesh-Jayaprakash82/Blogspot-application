@@ -1,12 +1,25 @@
 <html>
 <body style="background-color:grey;">
 <div class = "container-fluid pb-5">
+<%
+=begin%>
+ <%= render 'form' locals: { @blog: current_user.blogs.build } %> 
+<%
+=end%>
+<%
+=begin%>
+ <%= turbo_frame_tag "frame1" do%> 
+<%
+=end%>
 <%= simple_form_for @blog do |f| %>
   <%= f.input :name, label: 'Name : ', error: 'Name is mandatory, please specify' %><br>
   <%= f.input :subject,  label: 'Subject : ' %><br>
   <%= f.input :description, label: 'Description : ', placeholder: 'Max 100 words' %><br>
-  <center><%= f.button :submit %>
+  <center><%= f.button :submit%>
 <% end %>
+<div id="update_name">
+<%= render partial: "blogs/updated_names" %>
+</div>
 </div>
 </body>
 </html>

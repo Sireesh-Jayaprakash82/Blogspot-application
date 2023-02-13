@@ -1,11 +1,15 @@
+
 <%
 =begin%>
- <%= turbo_frame_tag "frame1" do %>  
+ <%= turbo_frame_tag "frame1" do %>   
 <%
 =end%>
-<% beek = Blog.all %>
-<% beek.each do |b|%>
-<h2><%= b.name %></h2><br>
+<% @blog = Blog.order(created_at: :desc) %>
+<% @blog.each do |b|%>
+<div id="<%= dom_id(b) %>">  
+<h2><center><%= b.name %><br><%= link_to "Delete", blog_path(b), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></center></h2>
+<br>
+</div>
 <% end %>
-
 <%#end%>
+
