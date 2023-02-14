@@ -12,21 +12,17 @@
  <%= turbo_frame_tag "frame1" do %>  
 <%
 =end%>
-
-<%= turbo_stream_from "mystr" %> 
-<div class = "container-fluid" id="content">
-<center><%= button_to "Load Names", time_path %></center>
-<div id="blog_display">
-<%= render 'blog_name'%>
-</div> 
-</div> 
 <%
 =begin%>
- <div id="blog_display">
- <%= render 'blog_name'%>
+ <%= turbo_stream_from "mystr" %> 
+ <div class = "container-fluid" id="content">
+<center><%= button_to "Load Names", time_path %></center>
 </div> 
 <%
 =end%>
+<div id="blog_display">
+ <%= render 'blog_name'%>
+</div>
 
 <%
 =begin%>

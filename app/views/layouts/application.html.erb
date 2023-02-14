@@ -47,13 +47,12 @@
         <li class="nav-item">
           <li><h2><%= link_to "Dashboard", root_path, class: "navbar-brand" %></h2></li>
         </li>
-        <li class="nav-item">
           <%
 =begin%>
  <%= turbo_frame_tag current_user.blogs.build do %> 
 <%
 =end%>
-          <li><h2><%= link_to "Create a Blog", new_blog_path, class: "navbar-brand" %></h2></li>
+            
           <%
 =begin%>
  <% end %> 
@@ -63,13 +62,17 @@
         <li class="nav-item">
           <% if user_signed_in? %>
             <li><h2><%= link_to "Sign Out", destroy_user_session_path, data: { turbo_method: :Deletd }, class: "navbar-brand" %></h2></li>
+            <li><h2><%= link_to "Create a Blog", new_blog_path, class: "navbar-brand" %></h2></li>
           <% else %> 
             <li><h2><%= link_to "Sign Up", new_user_registration_path, class: "navbar-brand" %></h2></li>
             <li><h2><%= link_to "Log In", new_user_session_path, class: "navbar-brand" %></h2></li>
           <% end %>
         </li>
         <li class="nav-item" id="date">
-          <h3></h3>
+        <h3></h3>
+        </li>
+        <li class="nav-item">
+        <li><h2><%= DateTime.now.strftime("%H:%M:%S") %></h2></li>
         </li>
       </ul>
       <form class="d-flex" role="search" method = 'GET' action = "/search">
@@ -91,7 +94,8 @@
 <%
 =end%>
 <% end %>
-<%=DateTime.now%>
+
+<br>
 <%= yield %>
        
 </body>

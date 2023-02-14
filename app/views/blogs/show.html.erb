@@ -1,3 +1,5 @@
+<html>
+<body style="background-color:grey;">
 <center><h2>
 Name : <%= @blog.name %><br>
 Subject : <%= @blog.subject %><br>
@@ -6,3 +8,5 @@ Description : <%= @blog.description %>
 <% if user_signed_in? %>
 <h5><%= link_to "Delete", blog_path(@blog), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %></h5></center>
 <% end %>
+</body>
+</html>
